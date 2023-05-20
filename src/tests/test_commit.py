@@ -17,12 +17,12 @@ class CommitTests(unittest.TestCase):
         push_file_to_commit(commit, file1)
         push_file_to_commit(commit, file2)
 
-        self.assertEqual(commit.head_file, file2)
-        self.assertEqual(commit.tail_file, file1)
-        self.assertIsNone(file1.next_)
-        self.assertEqual(file1.prev_, file2)
-        self.assertEqual(file2.next_, file1)
-        self.assertIsNone(file2.prev_)
+        self.assertEqual(commit.tail_file, file2)
+        self.assertEqual(commit.head_file, file1)
+        self.assertIsNone(file1.prev_)
+        self.assertEqual(file1.next_, file2)
+        self.assertEqual(file2.prev_, file1)
+        self.assertIsNone(file2.next_)
 
         print("test_push_file_to_commit passed!")
 

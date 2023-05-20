@@ -10,3 +10,5 @@ class Actions(Enum):
     ADD = "add"
     COMMIT = "commit"
     LOG = "log"
+    SHOW = "show"
+    REBASE = "rebase"

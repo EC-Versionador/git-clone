@@ -8,4 +8,4 @@ class Archives(Enum):
 
     GIT_FOLDER = ".git_clone"
     FILES_TXT = "files.txt"
-    CONTENTS_TXT = "commit.txt"
+    CONTENTS_TXT = "contents.txt"

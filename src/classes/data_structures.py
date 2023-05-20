@@ -8,9 +8,9 @@ from typing import Optional
 class File:
     """A file represented by its path and the start and end of its content in contents.txt."""
 
-    path: str
-    start: int = 0
-    end: int = 0
+    path: str | None = None
+    start: int | None = None
+    end: int | None = None
     next_: Optional["File"] = None
     prev_: Optional["File"] = None
 
@@ -19,7 +19,8 @@ class File:
 class Commit:
     """A doubly linked list of files."""
 
-    message: str
+    id_: int | None = None
+    message: str | None = None
     next_: Optional["Commit"] = None
     prev_: Optional["Commit"] = None
     head_file: Optional[File] = None
