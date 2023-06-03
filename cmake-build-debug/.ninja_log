@@ -1,0 +1,22 @@
+# ninja log v5
+0	15	1685678952938756209	CMakeFiles/git_clone.dir/src/utils.c.o	a3a6c25c67f3436a
+1	19	1685678637493198174	CMakeFiles/git_clone.dir/src/serialize.c.o	810280c623681056
+1	37	1685680485561458974	CMakeFiles/git_clone.dir/src/parse.c.o	7812d6aaa5550323
+0	25	1685811651468368380	CMakeFiles/git_clone.dir/src/data_structures.c.o	4c5e0bd627e3c070
+0	20	1685811787791145614	CMakeFiles/git_clone.dir/src/actions.c.o	92e27b8fcd0d7f0c
+20	33	1685811787803146408	git_clone	f5a102caf87fa3bf
+0	8	1685662828377284937	build.ninja	a29cf186290dcc7f
+0	20	1685811105334811351	CMakeFiles/git_clone.dir/src/validations.c.o	b8635c929e8309c7
+0	21	1685677393171212376	CMakeFiles/git_clone.dir/src/files.c.o	fd45065742450d78
+2	31	1685594082861531927	CMakeFiles/git_clone.dir/src/parser.c.o	dee059310684e89d
+0	11	1685810496815579341	CMakeFiles/git_clone.dir/src/git.c.o	26c65b6a98f16c5
+1	21	1685811941599768523	CMakeFiles/git_clone.dir/src/validations.c.o	b8635c929e8309c7
+21	32	1685811941615769288	git_clone	f5a102caf87fa3bf
+0	16	1685812002358528098	CMakeFiles/git_clone.dir/src/validations.c.o	b8635c929e8309c7
+16	29	1685812002370528616	git_clone	f5a102caf87fa3bf
+0	20	1685812063409046298	CMakeFiles/git_clone.dir/src/validations.c.o	b8635c929e8309c7
+20	31	1685812063425046929	git_clone	f5a102caf87fa3bf
+0	16	1685812182089404842	CMakeFiles/git_clone.dir/src/git.c.o	26c65b6a98f16c5
+16	28	1685812182105405391	git_clone	f5a102caf87fa3bf
+0	23	1685812617480919619	CMakeFiles/git_clone.dir/src/actions.c.o	92e27b8fcd0d7f0c
+23	34	1685812617496915455	git_clone	f5a102caf87fa3bf

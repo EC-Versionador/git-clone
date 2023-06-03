@@ -1,0 +1,3 @@
+/home/teseu/CLionProjects/git-clone/cmake-build-debug/CMakeFiles/git_clone.dir
+/home/teseu/CLionProjects/git-clone/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/teseu/CLionProjects/git-clone/cmake-build-debug/CMakeFiles/rebuild_cache.dir
