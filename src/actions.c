@@ -264,5 +264,59 @@ void git_show(char const *commit_id_str) {
 }
 
 void git_rebase(char const *commit_id_str) {
+  // make validations
+  bool is_valid = validate_repository();
+  if (!is_valid)
+    return;
 
+  // parse commit id into int
+  int commit_id = atoi(commit_id_str);
+
+  // parse files.txt into repository
+  CharVector *files_txt_lines = read_lines(FILES_TXT);
+  if (files_txt_lines == NULL) {
+    printf("Error reading %s\n", FILES_TXT);
+    return;
+  }
+  Repository *repository = parse_repository(files_txt_lines);
+  free_vector(files_txt_lines);
+  if (repository == NULL) {
+    printf("Error parsing repository\n");
+    return;
+  }
+
+  // find commit with given id
+  Commit *commit = repository->head_commit;
+  while (commit != NULL) {
+    if (commit->id == commit_id) {
+      break;
+    }
+    commit = commit->next;
+  }
+  if (commit == NULL) {
+    printf("Commit not found\n");
+    free_repository(repository, true, true);
+    return;
+  }
+
+  // read contents.txt lines
+  CharVector *contents_txt_lines = read_lines(CONTENTS_TXT);
+  if (contents_txt_lines == NULL) {
+    printf("Error reading %s\n", CONTENTS_TXT);
+    free_repository(repository, true, true);
+    return;
+  }
+
+  // for each file in commit, override its current content with the data in
+  // the commit
+  File *file = commit->tail_file;
+  while (file != NULL) {
+    write_to_file(file->path, "");
+    for (int i = file->start - 1; i <= file->end - 1; i++) {
+      char const *line = contents_txt_lines->data[i];
+      append_to_file(file->path, line);
+    }
+    file = file->prev;
+  }
+  free_vector(contents_txt_lines);
 }
