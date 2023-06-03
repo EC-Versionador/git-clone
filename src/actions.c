@@ -189,7 +189,33 @@ void git_commit(char const *message) {
 }
 
 void git_log(bool log_content) {
+  // make validations
+  bool is_valid = validate_repository();
+  if (!is_valid)
+    return;
 
+  // parse files.txt into repository
+  CharVector *files_txt_lines = read_lines(FILES_TXT);
+  if (files_txt_lines == NULL) {
+    printf("Error reading %s\n", FILES_TXT);
+    return;
+  }
+  Repository *repository = parse_repository(files_txt_lines);
+  free_vector(files_txt_lines);
+  if (repository == NULL) {
+    printf("Error parsing repository\n");
+    return;
+  }
+  // read contents.txt lines
+  CharVector *contents_txt_lines = read_lines(CONTENTS_TXT);
+  if (contents_txt_lines == NULL) {
+    printf("Error reading %s\n", CONTENTS_TXT);
+    free_repository(repository, true, true);
+    return;
+  }
+  // print repository
+  print_repository(repository, log_content, contents_txt_lines->data);
+  free_vector(contents_txt_lines);
 }
 
 void git_show(char const *commit_id_str) {
