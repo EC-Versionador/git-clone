@@ -263,7 +263,7 @@ void git_show(char const *commit_id_str) {
   free_repository(repository, true, true);
 }
 
-void git_rebase(char const *commit_id_str) {
+void git_checkout(char const *commit_id_str) {
   // make validations
   bool is_valid = validate_repository();
   if (!is_valid)

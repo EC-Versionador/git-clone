@@ -37,7 +37,7 @@ int main(int argc, char const *argv[]) {
     return 0;
   }
   if (is_rebase) {
-    git_rebase(argv[2]);
+    git_checkout(argv[2]);
     return 0;
   }
 

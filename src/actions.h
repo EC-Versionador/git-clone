@@ -20,6 +20,6 @@ void git_log(bool log_content);
 
 void git_show(char const *commit_id_str);
 
-void git_rebase(char const *commit_id_str);
+void git_checkout(char const *commit_id_str);
 
 #endif // GIT_CLONE_ACTIONS_H
