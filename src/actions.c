@@ -219,7 +219,48 @@ void git_log(bool log_content) {
 }
 
 void git_show(char const *commit_id_str) {
+  // make validations
+  bool is_valid = validate_repository();
+  if (!is_valid)
+    return;
+  // parse commit id to int
+  int commit_id = atoi(commit_id_str);
 
+  // parse files.txt into repository
+  CharVector *files_txt_lines = read_lines(FILES_TXT);
+  if (files_txt_lines == NULL) {
+    printf("Error reading %s\n", FILES_TXT);
+    return;
+  }
+  Repository *repository = parse_repository(files_txt_lines);
+  free_vector(files_txt_lines);
+  if (repository == NULL) {
+    printf("Error parsing repository\n");
+    return;
+  }
+
+  // read contents.txt lines
+  CharVector *contents_txt_lines = read_lines(CONTENTS_TXT);
+  if (contents_txt_lines == NULL) {
+    printf("Error reading %s\n", CONTENTS_TXT);
+    free_repository(repository, true, true);
+    return;
+  }
+
+  // find commit with given id and print it
+  Commit *commit = repository->tail_commit;
+  while (commit != NULL) {
+    if (commit->id == commit_id) {
+      print_commit(commit, true, contents_txt_lines->data);
+      free_vector(contents_txt_lines);
+      free_repository(repository, true, true);
+      return;
+    }
+    commit = commit->prev;
+  }
+  printf("Commit not found\n");
+  free_vector(contents_txt_lines);
+  free_repository(repository, true, true);
 }
 
 void git_rebase(char const *commit_id_str) {
