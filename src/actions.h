@@ -8,7 +8,7 @@
 #define COMMIT "commit"
 #define LOG "log"
 #define SHOW "show"
-#define REBASE "rebase"
+#define CHECKOUT "checkout"
 
 void git_init();
 

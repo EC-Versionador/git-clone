@@ -21,10 +21,10 @@ bool validate_arguments(int argc, char const *argv[]) {
   bool is_commit = strcmp(action, COMMIT) == 0;
   bool is_log = strcmp(action, LOG) == 0;
   bool is_show = strcmp(action, SHOW) == 0;
-  bool is_rebase = strcmp(action, REBASE) == 0;
+  bool is_checkout = strcmp(action, CHECKOUT) == 0;
 
   // if invalid action
-  if (!is_init && !is_add && !is_commit && !is_log && !is_show && !is_rebase) {
+  if (!is_init && !is_add && !is_commit && !is_log && !is_show && !is_checkout) {
     printf("Invalid action\n");
     return false;
   }
@@ -70,14 +70,14 @@ bool validate_arguments(int argc, char const *argv[]) {
     printf("Show receives one numeric argument (the commit id)!\n");
     return false;
   }
-  // if rebase and has more than one argument
-  if (is_rebase && argc != 3) {
-    printf("Rebase receives one numeric argument (the commit id)!\n");
+  // if checkout and has more than one argument
+  if (is_checkout && argc != 3) {
+    printf("Checkout receives one numeric argument (the commit id)!\n");
     return false;
   }
-  // if rebase and argument is not numeric
-  if (is_rebase && !is_numeric(argv[2])) {
-    printf("Rebase receives one numeric argument (the commit id)!\n");
+  // if checkout and argument is not numeric
+  if (is_checkout && !is_numeric(argv[2])) {
+    printf("Checkout receives one numeric argument (the commit id)!\n");
     return false;
   }
   return true;

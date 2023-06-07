@@ -14,7 +14,7 @@ int main(int argc, char const *argv[]) {
   bool is_commit = strcmp(action, COMMIT) == 0;
   bool is_log = strcmp(action, LOG) == 0;
   bool is_show = strcmp(action, SHOW) == 0;
-  bool is_rebase = strcmp(action, REBASE) == 0;
+  bool is_checkout = strcmp(action, CHECKOUT) == 0;
 
   if (is_init) {
     git_init();
@@ -36,7 +36,7 @@ int main(int argc, char const *argv[]) {
     git_show(argv[2]);
     return 0;
   }
-  if (is_rebase) {
+  if (is_checkout) {
     git_checkout(argv[2]);
     return 0;
   }
